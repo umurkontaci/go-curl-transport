@@ -8,7 +8,7 @@ import (
 	"bytes"
 	"errors"
 	"fmt"
-	"github.com/umurkontaci/curl/pool"
+	"github.com/umurkontaci/go-curl-transport/pool"
 	"github.com/umurkontaci/go-curl"
 	"io"
 	"net/http"
