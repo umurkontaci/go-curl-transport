@@ -38,7 +38,7 @@ import (
 
 func main() {
     cli := http.Client{Transport: transport.New()}
-    res, err := cli.Get('https://httpbin.org/uuid')
+    res, err := cli.Get("https://httpbin.org/uuid")
     if err != nil {
         panic(err)
     }
