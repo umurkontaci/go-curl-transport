@@ -1,0 +1,36 @@
+version: 2
+
+common: &common
+  working_directory: /go/src/github.com/umurkontaci/go-curl-transport
+  steps:
+    - checkout
+
+    - run: sudo apt-get update -qq
+    - run: DEBIAN_FRONTEND=noninteractive sudo apt-get install libcurl4-openssl-dev -y -qq
+
+    # specify any bash command here prefixed with `run: `
+    - run: go get -v github.com/umurkontaci/go-curl-transport/transport
+    - run: go get -v github.com/umurkontaci/go-curl-transport/pool
+    - run: go test -v github.com/umurkontaci/go-curl-transport/transport
+    - run: go test -v github.com/umurkontaci/go-curl-transport/pool
+
+jobs:
+  golang-1_9:
+    docker:
+      - image: circleci/golang:1.9
+    <<: *common
+  golang-1_8:
+    docker:
+      - image: circleci/golang:1.8
+    <<: *common
+  golang-1_7:
+    docker:
+      - image: circleci/golang:1.7
+    <<: *common
+workflows:
+  version: 2
+  all_golang:
+    jobs:
+      - golang-1_9
+      - golang-1_8
+      - golang-1_7
