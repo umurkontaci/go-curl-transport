@@ -37,7 +37,7 @@ func init() {
 //              return nil, err
 //          }
 //      }
-//      return http.Client{&t}, nil
+//      return http.Client{Transport: t}, nil
 //  }
 //
 // When working with curl directly, keep in mind that you are working with CGO and need to take the appropriate measures
