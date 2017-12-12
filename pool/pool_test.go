@@ -1,13 +1,13 @@
 package pool
 
 import (
-	"testing"
-	"runtime"
+	"github.com/umurkontaci/go-curl"
 	"log"
-	"sync/atomic"
+	"runtime"
 	"sync"
+	"sync/atomic"
+	"testing"
 	"time"
-	"github.com/andelf/go-curl"
 )
 
 func TestPool_Get(t *testing.T) {

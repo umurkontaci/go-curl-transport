@@ -4,18 +4,18 @@
 package transport
 
 import (
-	"net/http"
-	"bytes"
-	"github.com/umurkontaci/go-curl"
 	"bufio"
-	"os"
-	"strings"
-	"fmt"
+	"bytes"
 	"errors"
-	"sync"
-	"io"
-	"runtime"
+	"fmt"
 	"github.com/umurkontaci/curl/pool"
+	"github.com/umurkontaci/go-curl"
+	"io"
+	"net/http"
+	"os"
+	"runtime"
+	"strings"
+	"sync"
 )
 
 func init() {

@@ -2,8 +2,8 @@ package pool
 
 import (
 	"github.com/umurkontaci/go-curl"
-	"sync"
 	"runtime"
+	"sync"
 )
 
 type Finalizer interface {

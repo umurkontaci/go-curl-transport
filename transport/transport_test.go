@@ -1,16 +1,16 @@
 package transport
 
 import (
-	"net/http/httptest"
-	"net/http"
-	"testing"
-	"strings"
-	"io/ioutil"
-	"time"
 	"bytes"
+	"io/ioutil"
+	"net/http"
+	"net/http/httptest"
+	"strings"
+	"testing"
+	"time"
 )
 
-func serve(t *testing.T, called chan bool, method string, body []byte, expectedPayload []byte) (*httptest.Server) {
+func serve(t *testing.T, called chan bool, method string, body []byte, expectedPayload []byte) *httptest.Server {
 	ts := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		if r.Method != method {
 			t.Errorf("Expected method to be '%s', got '%s'", method, r.Method)
