@@ -6,6 +6,7 @@ import (
 	"sync"
 )
 
+// Finalizer is an interface for finalizing curl instances
 type Finalizer interface {
 	Finalize(c *curlBox)
 }

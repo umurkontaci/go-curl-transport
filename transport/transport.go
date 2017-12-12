@@ -1,4 +1,4 @@
-// transport exports a Transport struct that will make http.Client to use libcurl when making requests.
+// Package transport exports a Transport struct that will make http.Client to use libcurl when making requests.
 // Transport supports HTTP/1.0 and HTTP/1.1. It does not support HTTP/2 at this moment.
 // This package requires libcurl headers to be available in the system.
 package transport
@@ -8,8 +8,8 @@ import (
 	"bytes"
 	"errors"
 	"fmt"
-	"github.com/umurkontaci/go-curl-transport/pool"
 	"github.com/umurkontaci/go-curl"
+	"github.com/umurkontaci/go-curl-transport/pool"
 	"io"
 	"net/http"
 	"os"
@@ -102,6 +102,7 @@ func postConfigure(_ *curl.CURL, _ *http.Request) error {
 	return nil
 }
 
+// WriterResetter is a writeable interface that has a Reset method that clears everything written so far.
 type WriterResetter interface {
 	io.Writer
 	Resetter
