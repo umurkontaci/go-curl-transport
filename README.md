@@ -71,20 +71,27 @@ Or if you are working with Kerberos or GSS, since curl integrates with Kerberos 
 all you have to do is to set the flag and you have a GSSNEGOTIATE capable http Client.
 
 ```go
-  func GssClient() (*http.Client, error) {
-      t := transport.New()
-      t.PostConfigure = func(c *curl.CURL, r *http.Request) error {
-          err := c.Setopt(curl.OPT_HTTPAUTH, curl.AUTH_GSSNEGOTIATE)
-          if err != nil {
-              return nil, err
-          }
-          err = c.Setopt(curl.OPT_USERPWD, ":")
-          if err != nil {
-              return nil, err
-          }
-     }
-     return http.Client{Transport: t}, nil
-  }
+
+import (
+    "net/http"
+    "github.com/umurkontaci/go-curl-transport/transport"
+    "github.com/umurkontaci/go-curl"
+)
+
+func GssClient() (*http.Client, error) {
+    t := transport.New()
+    t.PostConfigure = func(c *curl.CURL, r *http.Request) error {
+        err := c.Setopt(curl.OPT_HTTPAUTH, curl.AUTH_GSSNEGOTIATE)
+        if err != nil {
+            return nil, err
+            }
+        err = c.Setopt(curl.OPT_USERPWD, ":")
+        if err != nil {
+            return nil, err
+        }
+    }
+    return http.Client{Transport: t}, nil
+}
 ```
 
 
