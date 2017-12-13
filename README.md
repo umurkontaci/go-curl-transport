@@ -2,7 +2,8 @@
 
 [![CircleCI](https://circleci.com/gh/umurkontaci/go-curl-transport.svg?style=svg)](https://circleci.com/gh/umurkontaci/go-curl-transport)
 [![Go Report Card](https://goreportcard.com/badge/github.com/umurkontaci/go-curl-transport)](https://goreportcard.com/report/github.com/umurkontaci/go-curl-transport)
-
+[![GoDoc](https://img.shields.io/badge/godoc-reference-blue.svg)](https://godoc.org/github.com/umurkontaci/go-curl-transport/transport)
+[![CodeCov](https://codecov.io/gh/umurkontaci/go-curl-transport/branch/master/graph/badge.svg)](https://codecov.io/gh/umurkontaci/go-curl-transport)
 
 Curl Transport is an open source software that allows you to use Go's native `http.Client` backed with curl.
 

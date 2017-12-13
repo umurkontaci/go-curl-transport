@@ -18,6 +18,24 @@ func TestPool_Get(t *testing.T) {
 	}
 }
 
+func TestPool_GetAndPutAndGet(t *testing.T) {
+	func() {
+		pool := FinalizingPool{}
+		c := pool.Get()
+		if c == nil {
+			t.Errorf("Get returned nil")
+		}
+		pool.Put(c)
+		c = pool.Get()
+		if c == nil {
+			t.Errorf("Get returned nil")
+		}
+		pool.Put(c)
+	}()
+
+	runtime.GC()
+}
+
 type MockFinalizer struct {
 	FinalizeHandler func(container *curlBox)
 }

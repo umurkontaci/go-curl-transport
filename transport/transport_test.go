@@ -190,6 +190,16 @@ func TestTransport_RoundTrip_AssignsPool(t *testing.T) {
 	}
 }
 
+func TestTransport_RoundTrip_HTTP2(t *testing.T) {
+	tr := New()
+	cli := http.Client{Transport: tr}
+	req := http.Request{RequestURI: "http://localhost:10000", ProtoMajor: 2}
+	_, err := cli.Do(&req)
+	if err == nil {
+		t.Error("Expected an error for HTTP/2")
+	}
+}
+
 func BenchmarkNetHttpGet(b *testing.B) {
 	ts := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte("hello"))

@@ -11,8 +11,10 @@ common: &common
     # specify any bash command here prefixed with `run: `
     - run: go get -v github.com/umurkontaci/go-curl-transport/transport
     - run: go get -v github.com/umurkontaci/go-curl-transport/pool
-    - run: go test -v github.com/umurkontaci/go-curl-transport/transport
-    - run: go test -v github.com/umurkontaci/go-curl-transport/pool
+    - run: go test -v github.com/umurkontaci/go-curl-transport/transport -coverprofile=transport.txt -covermode=atomic
+    - run: go test -v github.com/umurkontaci/go-curl-transport/pool -coverprofile=pool.txt -covermode=atomic
+    - run: cat transport.txt pool.txt > coverage.txt && rm transport.txt pool.txt
+    - run: bash <(curl -s https://codecov.io/bash)
 
 jobs:
   golang-1_9:
